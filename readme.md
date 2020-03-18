@@ -12,7 +12,7 @@
 
 ***项目利用 Nodejs(Http) + Express 启动一个端口服务作为服务端***
 
-`解答`
+#### `解答`
 
 ```js
 
@@ -28,7 +28,7 @@ server.listen(port, hostname, (err) => {})
 
 webpack 监听文件变化以及编译
 
-`解答`
+#### `解答`
 
 ```js
 
@@ -72,7 +72,7 @@ app.use(middleware);
 
 实现双方通信 websocket [浏览器端][服务端]
 
-`解答`
+#### `解答`
 
 [参考 sockjs-client](https://github.com/sockjs/sockjs-client)
 
@@ -130,13 +130,13 @@ app.use(middleware);
 
     - ⚔ 刷新页面
 
-    socekt server 发送信号 浏览器已经创建了 websocket 建立连接
+        - socekt server 发送信号 浏览器已经创建了 websocket 建立连接
     
-    收到信号 浏览器利用自身的 `window` 对象进行刷新 window.location.reload()
+        - 收到信号 浏览器利用自身的 `window` 对象进行刷新 window.location.reload()
 
     - ⚔ 结束
 
-    完成一次通信
+        - 完成一次通信
 
 
 ## 环境准备
