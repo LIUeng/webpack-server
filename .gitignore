@@ -10,8 +10,13 @@ package-lock.json
 node_modules
 
 # temp unfinished
-middlewares/*
-plugins/*
+# middlewares/*
+# plugins/*
 
 # private md
 readme.article.md
+
+# build
+build
+
+# bin

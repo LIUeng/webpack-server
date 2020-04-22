@@ -1,10 +1,12 @@
 'use strict';
 
 const http = require('http');
+const path = require('path');
+const serveIndex = require('serve-index');
 const SockJsServer = require('./SockJsServer');
 const express = require('express');
-// const webpackDevMiddleware = require('../middlewares/webpack-dev-middleware');
-const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackDevMiddleware = require('../middlewares/webpack-dev-middleware');
+// const webpackDevMiddleware = require('webpack-dev-middleware');
 
 /**
  * server p
@@ -17,8 +19,9 @@ class Server {
         this.app = express();
 
         this.setupHooks();
-        this.setupRoutes();
         this.setupMiddleware();
+        this.setupServeIndex();
+        this.setupRoutes();
         this.setupStaticFeatrue();
 
         // this.listenApp = null;
@@ -31,7 +34,7 @@ class Server {
      * routes
      */
     setupRoutes() {
-        // this.app.use(express.static('./public'));
+        this.app.use(express.static('./public'));
     }
 
     /**
@@ -62,6 +65,20 @@ class Server {
      */
     setupStaticFeatrue() {
         this.app.use('/', express.static('./public'));
+    }
+
+    /**
+     * setup serve index /
+     */
+    setupServeIndex() {
+        this.app.use('/', (req, res, next) => {
+            if(req.method !== 'GET' && req.method !== 'HEAD') {
+                return next();
+            }
+
+            console.log(path.resolve(__dirname, '../'));
+            serveIndex(path.resolve(__dirname, '../'))(req, res, next);
+        })
     }
 
     /* http server */
